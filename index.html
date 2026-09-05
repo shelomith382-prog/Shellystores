@@ -1,931 +1,549 @@
 <!DOCTYPE html>
 <html lang="sw">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-  <title>ShellyStores | Fashion & Accessories</title>
-
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
-
-    html {
-      scroll-behavior: smooth;
-    }
-
-    body {
-      font-family: Arial, Helvetica, sans-serif;
-      background: #fff;
-      color: #111;
-    }
-
-    a {
-      text-decoration: none;
-      color: inherit;
-    }
-
-    button {
-      font-family: inherit;
-    }
-
-    /* HEADER */
-    header {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      background: #080808;
-      color: white;
-      padding: 15px 5%;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .logo {
-      font-family: Georgia, serif;
-      font-size: 27px;
-      font-weight: bold;
-    }
-
-    .logo span {
-      color: #dcae35;
-    }
-
-    .tagline {
-      font-size: 12px;
-      color: #ddd;
-      margin-top: 3px;
-    }
-
-    nav {
-      display: flex;
-      gap: 25px;
-      font-size: 14px;
-    }
-
-    nav a:hover {
-      color: #dcae35;
-    }
-
-    .cart-button {
-      background: #dcae35;
-      border: none;
-      padding: 10px 15px;
-      border-radius: 25px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .cart-count {
-      background: #111;
-      color: #dcae35;
-      padding: 3px 7px;
-      border-radius: 50%;
-      margin-left: 5px;
-    }
-
-    /* HERO */
-    .hero {
-      min-height: 70vh;
-      padding: 70px 6%;
-      color: white;
-      display: flex;
-      align-items: center;
-
-      background:
-        linear-gradient(
-          90deg,
-          rgba(0,0,0,.92),
-          rgba(0,0,0,.45)
-        ),
-        url("images/IMG-20260826-WA0097.jpg");
-
-      background-size: cover;
-      background-position: center;
-    }
-
-    .hero-content {
-      max-width: 600px;
-    }
-
-    .small-title {
-      color: #dcae35;
-      letter-spacing: 3px;
-      font-weight: bold;
-      margin-bottom: 15px;
-    }
-
-    .hero h1 {
-      font-family: Georgia, serif;
-      font-size: clamp(45px, 8vw, 80px);
-      line-height: .95;
-      margin-bottom: 20px;
-    }
-
-    .hero h1 span {
-      color: #dcae35;
-    }
-
-    .hero h2 {
-      font-size: 24px;
-      margin-bottom: 15px;
-    }
-
-    .hero p {
-      font-size: 18px;
-      line-height: 1.6;
-      color: #eee;
-    }
-
-    .hero-button {
-      display: inline-block;
-      margin-top: 25px;
-      background: #dcae35;
-      color: #111;
-      padding: 15px 28px;
-      border-radius: 8px;
-      font-weight: bold;
-    }
-
-    /* FEATURES */
-    .features {
-      background: #090909;
-      color: white;
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      padding: 25px 5%;
-      gap: 15px;
-    }
-
-    .feature {
-      text-align: center;
-      padding: 10px;
-      border-right: 1px solid #444;
-    }
-
-    .feature:last-child {
-      border-right: none;
-    }
-
-    .feature-icon {
-      color: #dcae35;
-      font-size: 27px;
-      margin-bottom: 8px;
-    }
-
-    .feature strong {
-      display: block;
-      margin-bottom: 5px;
-    }
-
-    .feature small {
-      color: #ccc;
-    }
-
-    /* SECTION */
-    .section {
-      padding: 70px 5%;
-    }
-
-    .section-title {
-      text-align: center;
-      margin-bottom: 35px;
-    }
-
-    .section-title p {
-      color: #dcae35;
-      font-size: 13px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .section-title h2 {
-      font-family: Georgia, serif;
-      font-size: 40px;
-      margin-top: 8px;
-    }
-
-    .gold-line {
-      width: 70px;
-      height: 3px;
-      background: #dcae35;
-      margin: 12px auto;
-    }
-
-    /* CATEGORIES */
-    .categories {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 18px;
-    }
-
-    .category {
-      background: #f5f3ef;
-      border-radius: 14px;
-      overflow: hidden;
-      box-shadow: 0 5px 18px rgba(0,0,0,.08);
-    }
-
-    .category img {
-      width: 100%;
-      height: 210px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .category-info {
-      padding: 18px;
-    }
-
-    .category-info h3 {
-      margin-bottom: 7px;
-      font-size: 20px;
-    }
-
-    .category-info p {
-      color: #666;
-      font-size: 14px;
-    }
-
-    /* PRODUCTS */
-    .products {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
-    }
-
-    .product {
-      border: 1px solid #eee;
-      border-radius: 13px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 5px 20px rgba(0,0,0,.06);
-    }
-
-    .product-image {
-      position: relative;
-    }
-
-    .product-image img {
-      width: 100%;
-      height: 270px;
-      object-fit: cover;
-      display: block;
-    }
-
-    .new {
-      position: absolute;
-      top: 12px;
-      left: 12px;
-      background: #111;
-      color: white;
-      padding: 6px 9px;
-      border-radius: 5px;
-      font-size: 11px;
-      font-weight: bold;
-    }
-
-    .product-info {
-      padding: 16px;
-    }
-
-    .product-info small {
-      color: #888;
-    }
-
-    .product-info h3 {
-      margin: 7px 0;
-      font-size: 18px;
-    }
-
-    .price {
-      color: #16803c;
-      font-weight: bold;
-      font-size: 18px;
-      margin-bottom: 13px;
-    }
-
-    .order-button {
-      width: 100%;
-      border: none;
-      background: #159447;
-      color: white;
-      padding: 12px;
-      border-radius: 7px;
-      font-weight: bold;
-      cursor: pointer;
-    }
-
-    .order-button:hover {
-      background: #0d7134;
-    }
-
-    /* WHATSAPP CTA */
-    .whatsapp-section {
-      margin: 10px 5% 60px;
-      background: #090909;
-      color: white;
-      border-radius: 15px;
-      padding: 35px;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 20px;
-    }
-
-    .whatsapp-section h2 {
-      color: #dcae35;
-      margin-bottom: 8px;
-    }
-
-    .whatsapp-section p {
-      color: #ddd;
-    }
-
-    .whatsapp-main {
-      border: 2px solid #dcae35;
-      color: #dcae35;
-      padding: 14px 22px;
-      border-radius: 30px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    /* ABOUT */
-    .about {
-      background: #f5f3ef;
-      padding: 70px 10%;
-      text-align: center;
-    }
-
-    .about h2 {
-      font-family: Georgia, serif;
-      font-size: 40px;
-      margin-bottom: 18px;
-    }
-
-    .about p {
-      max-width: 700px;
-      margin: auto;
-      line-height: 1.8;
-      color: #555;
-    }
-
-    /* CONTACT */
-    .contact {
-      text-align: center;
-      padding: 70px 20px;
-    }
-
-    .contact h2 {
-      font-family: Georgia, serif;
-      font-size: 40px;
-      margin-bottom: 10px;
-    }
-
-    .phone {
-      display: block;
-      margin: 12px auto;
-      font-weight: bold;
-      font-size: 19px;
-    }
-
-    /* FOOTER */
-    footer {
-      background: #080808;
-      color: white;
-      padding: 45px 6% 25px;
-    }
-
-    .footer-grid {
-      display: grid;
-      grid-template-columns: 2fr 1fr 1fr 1fr;
-      gap: 35px;
-      margin-bottom: 30px;
-    }
-
-    footer h3 {
-      font-family: Georgia, serif;
-      font-size: 25px;
-      margin-bottom: 12px;
-    }
-
-    footer h3 span {
-      color: #dcae35;
-    }
-
-    footer p,
-    footer li {
-      color: #bbb;
-      line-height: 1.8;
-      font-size: 14px;
-    }
-
-    footer ul {
-      list-style: none;
-    }
-
-    .copyright {
-      border-top: 1px solid #333;
-      padding-top: 20px;
-      text-align: center;
-      color: #888;
-      font-size: 13px;
-    }
-
-    /* MOBILE */
-    @media(max-width: 900px) {
-      nav {
-        display: none;
-      }
-
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .feature {
-        border-right: none;
-      }
-
-      .categories {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .products {
-        grid-template-columns: repeat(2, 1fr);
-      }
-
-      .footer-grid {
-        grid-template-columns: repeat(2, 1fr);
-      }
-    }
-
-    @media(max-width: 550px) {
-      header {
-        padding: 13px 4%;
-      }
-
-      .logo {
-        font-size: 23px;
-      }
-
-      .hero {
-        min-height: 65vh;
-        padding: 55px 5%;
-      }
-
-      .hero h1 {
-        font-size: 50px;
-      }
-
-      .hero h2 {
-        font-size: 20px;
-      }
-
-      .hero p {
-        font-size: 15px;
-      }
-
-      .features {
-        grid-template-columns: repeat(2, 1fr);
-        padding: 18px 3%;
-      }
-
-      .feature {
-        font-size: 12px;
-      }
-
-      .section {
-        padding: 55px 4%;
-      }
-
-      .section-title h2 {
-        font-size: 32px;
-      }
-
-      .categories {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .category img {
-        height: 160px;
-      }
-
-      .category-info {
-        padding: 12px;
-      }
-
-      .category-info h3 {
-        font-size: 17px;
-      }
-
-      .products {
-        grid-template-columns: 1fr 1fr;
-        gap: 10px;
-      }
-
-      .product-image img {
-        height: 190px;
-      }
-
-      .product-info {
-        padding: 11px;
-      }
-
-      .product-info h3 {
-        font-size: 15px;
-      }
-
-      .price {
-        font-size: 16px;
-      }
-
-      .whatsapp-section {
-        margin: 10px 4% 45px;
-        padding: 25px 18px;
-        display: block;
-        text-align: center;
-      }
-
-      .whatsapp-main {
-        display: inline-block;
-        margin-top: 18px;
-      }
-
-      .footer-grid {
-        grid-template-columns: 1fr 1fr;
-        gap: 25px;
-      }
-    }
-  </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShellyStores | Fashion & Accessories</title>
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#fff;
+  color:#111;
+}
+a{text-decoration:none;color:inherit}
+button{font-family:inherit;cursor:pointer}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#080808;
+  color:#fff;
+  padding:14px 5%;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:15px;
+}
+.logo{
+  font-family:Georgia,serif;
+  font-size:27px;
+  font-weight:bold;
+}
+.logo span{color:#d9ad38}
+.tagline{font-size:11px;color:#ccc;margin-top:3px}
+
+nav{display:flex;gap:25px;font-size:14px}
+nav a:hover{color:#d9ad38}
+
+.cart{
+  border:0;
+  background:#d9ad38;
+  color:#111;
+  padding:10px 15px;
+  border-radius:25px;
+  font-weight:bold;
+}
+.cart span{
+  background:#111;
+  color:#d9ad38;
+  border-radius:50%;
+  padding:3px 7px;
+  margin-left:4px;
+}
+
+/* HERO */
+.hero{
+  min-height:68vh;
+  display:flex;
+  align-items:center;
+  padding:70px 7%;
+  color:#fff;
+  background:
+    linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.35)),
+    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85");
+  background-size:cover;
+  background-position:center;
+}
+.hero-content{max-width:650px}
+.karibu{
+  color:#d9ad38;
+  letter-spacing:4px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+.hero h1{
+  font-family:Georgia,serif;
+  font-size:clamp(48px,9vw,82px);
+  line-height:.95;
+  margin-bottom:18px;
+}
+.hero h1 span{color:#d9ad38}
+.hero h2{
+  font-size:22px;
+  letter-spacing:2px;
+  margin-bottom:15px;
+}
+.hero p{
+  font-size:18px;
+  line-height:1.6;
+  color:#eee;
+}
+.hero-btn{
+  display:inline-block;
+  margin-top:25px;
+  padding:15px 28px;
+  background:#d9ad38;
+  color:#111;
+  border-radius:8px;
+  font-weight:bold;
+}
+
+/* FEATURES */
+.features{
+  background:#090909;
+  color:#fff;
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:10px;
+  padding:25px 5%;
+}
+.feature{
+  text-align:center;
+  padding:10px;
+  border-right:1px solid #444;
+}
+.feature:last-child{border:0}
+.icon{
+  color:#d9ad38;
+  font-size:27px;
+  margin-bottom:7px;
+}
+.feature strong{display:block;font-size:13px}
+.feature small{color:#bbb;font-size:11px}
+
+/* GENERAL */
+.section{padding:65px 5%}
+.heading{text-align:center;margin-bottom:35px}
+.heading small{
+  color:#d9ad38;
+  font-weight:bold;
+  letter-spacing:2px;
+}
+.heading h2{
+  font-family:Georgia,serif;
+  font-size:40px;
+  margin:8px 0;
+}
+.line{
+  width:65px;
+  height:3px;
+  background:#d9ad38;
+  margin:auto;
+}
+
+/* CATEGORIES */
+.categories{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:18px;
+}
+.category{
+  background:#f5f3ef;
+  border-radius:14px;
+  overflow:hidden;
+  box-shadow:0 5px 18px rgba(0,0,0,.08);
+  transition:.2s;
+}
+.category:hover{transform:translateY(-4px)}
+.category img{
+  width:100%;
+  height:210px;
+  object-fit:cover;
+}
+.category div{padding:16px}
+.category h3{font-size:20px;margin-bottom:5px}
+.category p{font-size:13px;color:#666}
+
+/* PRODUCTS */
+.products{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:20px;
+}
+.product{
+  border:1px solid #e8e8e8;
+  border-radius:13px;
+  overflow:hidden;
+  background:#fff;
+  box-shadow:0 4px 18px rgba(0,0,0,.07);
+}
+.product-img{
+  position:relative;
+  background:#f5f5f5;
+}
+.product-img img{
+  width:100%;
+  height:270px;
+  object-fit:cover;
+  display:block;
+}
+.badge{
+  position:absolute;
+  top:12px;
+  left:12px;
+  background:#111;
+  color:#fff;
+  padding:6px 9px;
+  border-radius:5px;
+  font-size:10px;
+  font-weight:bold;
+}
+.product-info{padding:16px}
+.product-info small{
+  color:#888;
+  font-size:10px;
+  letter-spacing:1px;
+}
+.product-info h3{font-size:17px;margin:7px 0}
+.price{
+  font-weight:bold;
+  font-size:18px;
+  color:#111;
+  margin:12px 0;
+}
+.order{
+  width:100%;
+  border:0;
+  background:#159447;
+  color:#fff;
+  padding:12px;
+  border-radius:7px;
+  font-weight:bold;
+}
+.order:hover{background:#0d7134}
+
+/* CTA */
+.cta{
+  margin:10px 5% 60px;
+  background:#090909;
+  color:#fff;
+  border-radius:15px;
+  padding:35px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  gap:20px;
+}
+.cta h2{color:#d9ad38;margin-bottom:8px}
+.cta p{color:#ccc}
+.whatsapp{
+  background:#159447;
+  color:#fff;
+  padding:14px 22px;
+  border-radius:30px;
+  font-weight:bold;
+  white-space:nowrap;
+}
+
+/* ABOUT */
+.about{
+  background:#f5f3ef;
+  padding:70px 10%;
+  text-align:center;
+}
+.about h2{
+  font-family:Georgia,serif;
+  font-size:40px;
+  margin-bottom:18px;
+}
+.about p{
+  max-width:750px;
+  margin:auto;
+  line-height:1.8;
+  color:#555;
+}
+
+/* CONTACT */
+.contact{
+  padding:65px 20px;
+  text-align:center;
+}
+.contact h2{
+  font-family:Georgia,serif;
+  font-size:40px;
+  margin-bottom:10px;
+}
+.phone{
+  display:block;
+  margin:12px auto;
+  font-size:18px;
+  font-weight:bold;
+}
+
+/* FOOTER */
+footer{
+  background:#080808;
+  color:#fff;
+  padding:40px 6% 22px;
+}
+.footer{
+  display:grid;
+  grid-template-columns:2fr 1fr 1fr 1fr;
+  gap:30px;
+  margin-bottom:30px;
+}
+footer h3{
+  font-family:Georgia,serif;
+  margin-bottom:12px;
+}
+footer h3 span{color:#d9ad38}
+footer p,footer li{
+  color:#bbb;
+  font-size:13px;
+  line-height:1.9;
+}
+footer ul{list-style:none}
+.copy{
+  border-top:1px solid #333;
+  padding-top:20px;
+  text-align:center;
+  color:#777;
+  font-size:12px;
+}
+
+/* MOBILE */
+@media(max-width:900px){
+  nav{display:none}
+  .features{grid-template-columns:repeat(2,1fr)}
+  .feature{border:0}
+  .categories{grid-template-columns:repeat(2,1fr)}
+  .products{grid-template-columns:repeat(2,1fr)}
+  .footer{grid-template-columns:repeat(2,1fr)}
+}
+
+@media(max-width:550px){
+  header{padding:12px 4%}
+  .logo{font-size:23px}
+  .hero{min-height:67vh;padding:55px 5%}
+  .hero h1{font-size:49px}
+  .hero h2{font-size:18px}
+  .hero p{font-size:15px}
+  .features{padding:18px 3%}
+  .section{padding:55px 4%}
+  .heading h2{font-size:32px}
+  .categories{gap:10px}
+  .category img{height:155px}
+  .category div{padding:12px}
+  .category h3{font-size:16px}
+  .products{gap:10px}
+  .product-img img{height:190px}
+  .product-info{padding:11px}
+  .product-info h3{font-size:14px}
+  .price{font-size:15px}
+  .order{font-size:12px;padding:10px 5px}
+  .cta{
+    margin:10px 4% 45px;
+    padding:25px 18px;
+    display:block;
+    text-align:center;
+  }
+  .whatsapp{display:inline-block;margin-top:18px}
+  .footer{gap:20px}
+}
+</style>
 </head>
 
 <body>
 
-  <!-- HEADER -->
-  <header>
-    <div>
-      <div class="logo">
-        Shelly<span>Stores</span>
-      </div>
-      <div class="tagline">
-        Fashion & Accessories
-      </div>
-    </div>
+<!-- HEADER -->
+<header>
+  <div>
+    <div class="logo">Shelly<span>Stores</span></div>
+    <div class="tagline">Fashion & Accessories</div>
+  </div>
 
-    <nav>
-      <a href="#home">Home</a>
-      <a href="#categories">Bidhaa</a>
-      <a href="#about">Kuhusu</a>
-      <a href="#contact">Mawasiliano</a>
-    </nav>
+  <nav>
+    <a href="#home">Home</a>
+    <a href="#categories">Bidhaa</a>
+    <a href="#about">Kuhusu</a>
+    <a href="#contact">Mawasiliano</a>
+  </nav>
 
-    <button class="cart-button">
-      🛒 <span class="cart-count">0</span>
-    </button>
-  </header>
+  <button class="cart">
+    🛒 Kikapu <span id="count">0</span>
+  </button>
+</header>
 
 
-  <!-- HERO -->
-  <section class="hero" id="home">
-    <div class="hero-content">
+<!-- HERO -->
+<section class="hero" id="home">
+  <div class="hero-content">
 
-      <div class="small-title">
-        KARIBU
-      </div>
+    <div class="karibu">KARIBU</div>
 
-      <h1>
-        SHELLY<span>STORES</span>
-      </h1>
+    <h1>
+      SHELLY<span>STORES</span>
+    </h1>
 
-      <h2>
-        FASHION & ACCESSORIES
-      </h2>
-
-      <p>
-        Mitindo yako, chaguo lako ✨
-      </p>
-
-      <a href="#products" class="hero-button">
-        Tazama Bidhaa →
-      </a>
-
-    </div>
-  </section>
-
-
-  <!-- FEATURES -->
-  <section class="features">
-
-    <div class="feature">
-      <div class="feature-icon">🚚</div>
-      <strong>DELIVERY BORA</strong>
-      <small>Tunakifisha popote ulipo</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🛡️</div>
-      <strong>100% ORIGINAL</strong>
-      <small>Bidhaa bora na za uhakika</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">↩️</div>
-      <strong>RETURN POLICY</strong>
-      <small>Sera rahisi ya kurudisha bidhaa</small>
-    </div>
-
-    <div class="feature">
-      <div class="feature-icon">🎧</div>
-      <strong>SUPPORT 24/7</strong>
-      <small>Tuko hapa kukusaidia muda wote</small>
-    </div>
-
-  </section>
-
-
-  <!-- CATEGORIES -->
-  <section class="section" id="categories">
-
-    <div class="section-title">
-      <p>SHOP BY CATEGORY</p>
-      <h2>Chagua Kategoria</h2>
-      <div class="gold-line"></div>
-    </div>
-
-    <div class="categories">
-
-      <div class="category">
-        <img src="images/IMG-20260821-WA0221.jpg" alt="Nguo">
-        <div class="category-info">
-          <h3>NGUO</h3>
-          <p>Mitindo ya kisasa</p>
-        </div>
-      </div>
-
-      <div class="category">
-        <img src="images/IMG-20260823-WA0222.jpg" alt="Viatu">
-        <div class="category-info">
-          <h3>VIATU</h3>
-          <p>Za kisasa & stylish</p>
-        </div>
-      </div>
-
-      <div class="category">
-        <img src="images/IMG-20260823-WA0207.jpg" alt="Saa">
-        <div class="category-info">
-          <h3>SAA</h3>
-          <p>Fashion ya mkono</p>
-        </div>
-      </div>
-
-      <div class="category">
-        <img src="images/IMG-20260821-WA0092.jpg" alt="Accessories">
-        <div class="category-info">
-          <h3>ACCESSORIES</h3>
-          <p>Za wanawake & wanaume</p>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- PRODUCTS -->
-  <section class="section" id="products">
-
-    <div class="section-title">
-      <p>OUR COLLECTION</p>
-      <h2>Bidhaa Maarufu</h2>
-      <div class="gold-line"></div>
-    </div>
-
-    <div class="products">
-
-      <!-- PRODUCT 1 -->
-      <div class="product">
-        <div class="product-image">
-          <span class="new">NEW</span>
-          <img src="images/IMG-20260826-WA0097.jpg" alt="Jacket">
-        </div>
-
-        <div class="product-info">
-          <small>NGUO</small>
-          <h3>Jacket la Kiume</h3>
-          <div class="price">TSh 55,000</div>
-
-          <button class="order-button"
-            onclick="orderWhatsApp('Jacket la Kiume', '55,000')">
-            💬 Agiza WhatsApp
-          </button>
-        </div>
-      </div>
-
-
-      <!-- PRODUCT 2 -->
-      <div class="product">
-        <div class="product-image">
-          <span class="new">NEW</span>
-          <img src="images/IMG-20260823-WA0320.jpg" alt="Viatu">
-        </div>
-
-        <div class="product-info">
-          <small>VIATU</small>
-          <h3>Viatu vya Sport</h3>
-          <div class="price">TSh 70,000</div>
-
-          <button class="order-button"
-            onclick="orderWhatsApp('Viatu vya Sport', '70,000')">
-            💬 Agiza WhatsApp
-          </button>
-        </div>
-      </div>
-
-
-      <!-- PRODUCT 3 -->
-      <div class="product">
-        <div class="product-image">
-          <span class="new">NEW</span>
-          <img src="images/IMG-20260821-WA0104.jpg" alt="Saa">
-        </div>
-
-        <div class="product-info">
-          <small>SAA</small>
-          <h3>Saa ya Kiume</h3>
-          <div class="price">TSh 45,000</div>
-
-          <button class="order-button"
-            onclick="orderWhatsApp('Saa ya Kiume', '45,000')">
-            💬 Agiza WhatsApp
-          </button>
-        </div>
-      </div>
-
-
-      <!-- PRODUCT 4 - MBUKA -->
-      <div class="product">
-        <div class="product-image">
-          <span class="new">NEW</span>
-          <img src="images/IMG-20260824-WA0101.jpg" alt="Mkoba">
-        </div>
-
-        <div class="product-info">
-          <small>ACCESSORIES</small>
-          <h3>Mkoba wa Kisasa</h3>
-          <div class="price">TSh 45,000</div>
-
-          <button class="order-button"
-            onclick="orderWhatsApp('Mkoba wa Kisasa', '45,000')">
-            💬 Agiza WhatsApp
-          </button>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- WHATSAPP -->
-  <section class="whatsapp-section">
-
-    <div>
-      <h2>AGIZA KWA WHATSAPP</h2>
-      <p>
-        Chagua bidhaa yako na tuwasiliane moja kwa moja WhatsApp.
-      </p>
-    </div>
-
-    <a
-      class="whatsapp-main"
-      href="https://wa.me/255755889702"
-      target="_blank">
-      💬 Wasiliana Nasi
-    </a>
-
-  </section>
-
-
-  <!-- ABOUT -->
-  <section class="about" id="about">
-
-    <h2>Fashion kwa Kila Mtu</h2>
+    <h2>FASHION & ACCESSORIES</h2>
 
     <p>
-      ShellyStores ni online fashion store inayokuletea
-      nguo, viatu, saa na accessories za kisasa kwa
-      wanawake na wanaume. Chagua bidhaa unayoipenda
-      na agiza moja kwa moja kupitia WhatsApp.
+      Mitindo yako, chaguo lako ✨
     </p>
 
-  </section>
-
-
-  <!-- CONTACT -->
-  <section class="contact" id="contact">
-
-    <h2>Wasiliana Nasi</h2>
-
-    <p>
-      Una swali kuhusu bidhaa, size au oda?
-    </p>
-
-    <a class="phone" href="tel:0755889702">
-      📞 0755889702
+    <a href="#products" class="hero-btn">
+      Tazama Bidhaa →
     </a>
 
-    <a class="phone" href="tel:0710155631">
-      📞 0710155631
-    </a>
-
-    <a
-      class="whatsapp-main"
-      href="https://wa.me/255755889702"
-      target="_blank">
-      💬 WhatsApp
-    </a>
-
-  </section>
+  </div>
+</section>
 
 
-  <!-- FOOTER -->
-  <footer>
+<!-- FEATURES -->
+<section class="features">
 
-    <div class="footer-grid">
+  <div class="feature">
+    <div class="icon">🚚</div>
+    <strong>DELIVERY BORA</strong>
+    <small>Tunakufikishia popote ulipo</small>
+  </div>
 
+  <div class="feature">
+    <div class="icon">🛡️</div>
+    <strong>100% ORIGINAL</strong>
+    <small>Bidhaa bora na za uhakika</small>
+  </div>
+
+  <div class="feature">
+    <div class="icon">↩️</div>
+    <strong>RETURN POLICY</strong>
+    <small>Sera rahisi ya kurudisha bidhaa</small>
+  </div>
+
+  <div class="feature">
+    <div class="icon">🎧</div>
+    <strong>SUPPORT 24/7</strong>
+    <small>Tuko hapa kukusaidia</small>
+  </div>
+
+</section>
+
+
+<!-- CATEGORIES -->
+<section class="section" id="categories">
+
+  <div class="heading">
+    <small>SHOP BY CATEGORY</small>
+    <h2>Chagua Kategoria</h2>
+    <div class="line"></div>
+  </div>
+
+  <div class="categories">
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80">
       <div>
-        <h3>
-          Shelly<span>Stores</span>
-        </h3>
-
-        <p>
-          Fashion store kwa nguo, viatu,
-          saa na accessories za kisasa.
-        </p>
+        <h3>👗 NGUO</h3>
+        <p>Mitindo ya kisasa</p>
       </div>
-
-      <div>
-        <h3>MENU</h3>
-
-        <ul>
-          <li><a href="#home">Home</a></li>
-          <li><a href="#products">Bidhaa</a></li>
-          <li><a href="#about">Kuhusu Sisi</a></li>
-          <li><a href="#contact">Mawasiliano</a></li>
-        </ul>
-      </div>
-
-      <div>
-        <h3>KATEGORIA</h3>
-
-        <ul>
-          <li>Nguo</li>
-          <li>Viatu</li>
-          <li>Saa</li>
-          <li>Accessories</li>
-        </ul>
-      </div>
-
-      <div>
-        <h3>MAWASILIANO</h3>
-
-        <p>📞 0755889702</p>
-        <p>📞 0710155631</p>
-        <p>📍 Tanzania</p>
-      </div>
-
     </div>
 
-    <div class="copyright">
-      © 2026 ShellyStores. All rights reserved.
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1542291026-7eec264e27ff?auto=format&fit=crop&w=800&q=80">
+      <div>
+        <h3>👟 VIATU</h3>
+        <p>Za kisasa & stylish</p>
+      </div>
     </div>
 
-  </footer>
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80">
+      <div>
+        <h3>⌚ SAA</h3>
+        <p>Fashion ya mkono</p>
+      </div>
+    </div>
+
+    <div class="category">
+      <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80">
+      <div>
+        <h3>👜 ACCESSORIES</h3>
+        <p>Za wanawake & wanaume</p>
+      </div>
+    </div>
+
+  </div>
+</section>
 
 
-  <!-- JAVASCRIPT -->
-  <script>
+<!-- PRODUCTS -->
+<section class="section" id="products">
 
-    function orderWhatsApp(product, price) {
+  <div class="heading">
+    <small>OUR COLLECTION</small>
+    <h2>Bidhaa Maarufu</h2>
+    <div class="line"></div>
+  </div>
 
-      const message =
-        "Habari ShellyStores 👋%0A%0A" +
-        "Nataka kuagiza:%0A" +
-        "🛍️ " + product + "%0A" +
-        "💰 Bei: TSh " + price + "%0A%0A" +
-        "Naomba maelezo zaidi kuhusu bidhaa hii.";
+  <div class="products">
 
-      window.open(
-        "https://wa.me/255755889702?text=" + message,
-        "_blank"
-      );
-    }
+    <!-- 1 -->
+    <div class="product">
+      <div class="product-img">
+        <span class="badge">NEW</span>
+        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80">
+      </div>
+      <div class="product-info">
+        <small>NGUO</small>
+        <h3>Elegant Dress</h3>
+        <div class="price">TSh 45,000</div>
+        <button class="order"
+        onclick="order('Elegant Dress','45,000')">
+        💬 Agiza WhatsApp
+        </button>
+      </div>
+    </div>
 
-  </script>
+    <!-- 2 -->
+    <div class="product">
+      <div class="product-img">
+        <span class="badge">NEW</span>
+        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80">
+      </div>
+      <div class="product-info">
+        <small>NGUO</small>
+        <h3>Men's Casual Shirt</h3>
+        <div class="price">TSh 35,000</div>
+        <button class="order"
+        onclick="order('Men Casual Shirt','35,000')">
+        💬 Agiza WhatsApp
+        </button>
+      </div>
+    </div>
 
-</body>
-</html>
+    <!-- 3 -->
+    <div class="product">
+      <div class="product-img">
+        <span class="badge">NEW</span>
+        <img src="https://images.unsplash.com/photo-1542291026-7eec264e27ff?auto=format&fit=crop&w=800&q=80">
+      </div>
+      <div class="product-info">
+        <small>VIATU</small>
+        <h3>Classic Sneakers</h3>
+        <div class="price">TSh 65,000</div>
+        <button class="order"
+        onclick="order('Classic Sneakers','65,000')">
+        💬 Agiza WhatsApp
+        </button>
+      </div>
+    </div>
+
+    <!-- 4 MKOBA -->
+    <div class="product">
+      <div class="product-img">
+        <span class="badge">NEW</span>
+        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=
