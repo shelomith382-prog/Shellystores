@@ -1,549 +1,448 @@
 <!DOCTYPE html>
-<html lang="sw">
+<html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ShellyStores | Fashion & Accessories</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-html{scroll-behavior:smooth}
-body{
-  font-family:Arial,Helvetica,sans-serif;
-  background:#fff;
-  color:#111;
-}
-a{text-decoration:none;color:inherit}
-button{font-family:inherit;cursor:pointer}
+  <title>Shellystores | Fashion Store</title>
 
-header{
-  position:sticky;
-  top:0;
-  z-index:1000;
-  background:#080808;
-  color:#fff;
-  padding:14px 5%;
-  display:flex;
-  align-items:center;
-  justify-content:space-between;
-  gap:15px;
-}
-.logo{
-  font-family:Georgia,serif;
-  font-size:27px;
-  font-weight:bold;
-}
-.logo span{color:#d9ad38}
-.tagline{font-size:11px;color:#ccc;margin-top:3px}
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      scroll-behavior: smooth;
+    }
 
-nav{display:flex;gap:25px;font-size:14px}
-nav a:hover{color:#d9ad38}
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      background: #ffffff;
+      color: #171717;
+    }
 
-.cart{
-  border:0;
-  background:#d9ad38;
-  color:#111;
-  padding:10px 15px;
-  border-radius:25px;
-  font-weight:bold;
-}
-.cart span{
-  background:#111;
-  color:#d9ad38;
-  border-radius:50%;
-  padding:3px 7px;
-  margin-left:4px;
-}
+    a {
+      text-decoration: none;
+    }
 
-/* HERO */
-.hero{
-  min-height:68vh;
-  display:flex;
-  align-items:center;
-  padding:70px 7%;
-  color:#fff;
-  background:
-    linear-gradient(90deg,rgba(0,0,0,.92),rgba(0,0,0,.35)),
-    url("https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1800&q=85");
-  background-size:cover;
-  background-position:center;
-}
-.hero-content{max-width:650px}
-.karibu{
-  color:#d9ad38;
-  letter-spacing:4px;
-  font-weight:bold;
-  margin-bottom:15px;
-}
-.hero h1{
-  font-family:Georgia,serif;
-  font-size:clamp(48px,9vw,82px);
-  line-height:.95;
-  margin-bottom:18px;
-}
-.hero h1 span{color:#d9ad38}
-.hero h2{
-  font-size:22px;
-  letter-spacing:2px;
-  margin-bottom:15px;
-}
-.hero p{
-  font-size:18px;
-  line-height:1.6;
-  color:#eee;
-}
-.hero-btn{
-  display:inline-block;
-  margin-top:25px;
-  padding:15px 28px;
-  background:#d9ad38;
-  color:#111;
-  border-radius:8px;
-  font-weight:bold;
-}
+    /* ================= HEADER ================= */
 
-/* FEATURES */
-.features{
-  background:#090909;
-  color:#fff;
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:10px;
-  padding:25px 5%;
-}
-.feature{
-  text-align:center;
-  padding:10px;
-  border-right:1px solid #444;
-}
-.feature:last-child{border:0}
-.icon{
-  color:#d9ad38;
-  font-size:27px;
-  margin-bottom:7px;
-}
-.feature strong{display:block;font-size:13px}
-.feature small{color:#bbb;font-size:11px}
+    header {
+      background: #111111;
+      color: white;
+      padding: 15px 5%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-/* GENERAL */
-.section{padding:65px 5%}
-.heading{text-align:center;margin-bottom:35px}
-.heading small{
-  color:#d9ad38;
-  font-weight:bold;
-  letter-spacing:2px;
-}
-.heading h2{
-  font-family:Georgia,serif;
-  font-size:40px;
-  margin:8px 0;
-}
-.line{
-  width:65px;
-  height:3px;
-  background:#d9ad38;
-  margin:auto;
-}
+    .logo {
+      font-size: 27px;
+      font-weight: 800;
+      white-space: nowrap;
+    }
 
-/* CATEGORIES */
-.categories{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:18px;
-}
-.category{
-  background:#f5f3ef;
-  border-radius:14px;
-  overflow:hidden;
-  box-shadow:0 5px 18px rgba(0,0,0,.08);
-  transition:.2s;
-}
-.category:hover{transform:translateY(-4px)}
-.category img{
-  width:100%;
-  height:210px;
-  object-fit:cover;
-}
-.category div{padding:16px}
-.category h3{font-size:20px;margin-bottom:5px}
-.category p{font-size:13px;color:#666}
+    .logo span {
+      color: #ff2875;
+    }
 
-/* PRODUCTS */
-.products{
-  display:grid;
-  grid-template-columns:repeat(4,1fr);
-  gap:20px;
-}
-.product{
-  border:1px solid #e8e8e8;
-  border-radius:13px;
-  overflow:hidden;
-  background:#fff;
-  box-shadow:0 4px 18px rgba(0,0,0,.07);
-}
-.product-img{
-  position:relative;
-  background:#f5f5f5;
-}
-.product-img img{
-  width:100%;
-  height:270px;
-  object-fit:cover;
-  display:block;
-}
-.badge{
-  position:absolute;
-  top:12px;
-  left:12px;
-  background:#111;
-  color:#fff;
-  padding:6px 9px;
-  border-radius:5px;
-  font-size:10px;
-  font-weight:bold;
-}
-.product-info{padding:16px}
-.product-info small{
-  color:#888;
-  font-size:10px;
-  letter-spacing:1px;
-}
-.product-info h3{font-size:17px;margin:7px 0}
-.price{
-  font-weight:bold;
-  font-size:18px;
-  color:#111;
-  margin:12px 0;
-}
-.order{
-  width:100%;
-  border:0;
-  background:#159447;
-  color:#fff;
-  padding:12px;
-  border-radius:7px;
-  font-weight:bold;
-}
-.order:hover{background:#0d7134}
+    nav {
+      display: flex;
+      gap: 25px;
+    }
 
-/* CTA */
-.cta{
-  margin:10px 5% 60px;
-  background:#090909;
-  color:#fff;
-  border-radius:15px;
-  padding:35px;
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  gap:20px;
-}
-.cta h2{color:#d9ad38;margin-bottom:8px}
-.cta p{color:#ccc}
-.whatsapp{
-  background:#159447;
-  color:#fff;
-  padding:14px 22px;
-  border-radius:30px;
-  font-weight:bold;
-  white-space:nowrap;
-}
+    nav a {
+      color: white;
+      font-weight: bold;
+      font-size: 15px;
+    }
 
-/* ABOUT */
-.about{
-  background:#f5f3ef;
-  padding:70px 10%;
-  text-align:center;
-}
-.about h2{
-  font-family:Georgia,serif;
-  font-size:40px;
-  margin-bottom:18px;
-}
-.about p{
-  max-width:750px;
-  margin:auto;
-  line-height:1.8;
-  color:#555;
-}
+    nav a:hover {
+      color: #ff2875;
+    }
 
-/* CONTACT */
-.contact{
-  padding:65px 20px;
-  text-align:center;
-}
-.contact h2{
-  font-family:Georgia,serif;
-  font-size:40px;
-  margin-bottom:10px;
-}
-.phone{
-  display:block;
-  margin:12px auto;
-  font-size:18px;
-  font-weight:bold;
-}
+    .cart {
+      background: #ff2875;
+      color: white;
+      padding: 10px 15px;
+      border-radius: 25px;
+      font-weight: bold;
+      white-space: nowrap;
+    }
 
-/* FOOTER */
-footer{
-  background:#080808;
-  color:#fff;
-  padding:40px 6% 22px;
-}
-.footer{
-  display:grid;
-  grid-template-columns:2fr 1fr 1fr 1fr;
-  gap:30px;
-  margin-bottom:30px;
-}
-footer h3{
-  font-family:Georgia,serif;
-  margin-bottom:12px;
-}
-footer h3 span{color:#d9ad38}
-footer p,footer li{
-  color:#bbb;
-  font-size:13px;
-  line-height:1.9;
-}
-footer ul{list-style:none}
-.copy{
-  border-top:1px solid #333;
-  padding-top:20px;
-  text-align:center;
-  color:#777;
-  font-size:12px;
-}
+    /* ================= HERO ================= */
 
-/* MOBILE */
-@media(max-width:900px){
-  nav{display:none}
-  .features{grid-template-columns:repeat(2,1fr)}
-  .feature{border:0}
-  .categories{grid-template-columns:repeat(2,1fr)}
-  .products{grid-template-columns:repeat(2,1fr)}
-  .footer{grid-template-columns:repeat(2,1fr)}
-}
+    .hero {
+      min-height: 470px;
+      padding: 55px 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 30px;
+      background: linear-gradient(135deg, #fff0f5, #ffffff);
+      overflow: hidden;
+    }
 
-@media(max-width:550px){
-  header{padding:12px 4%}
-  .logo{font-size:23px}
-  .hero{min-height:67vh;padding:55px 5%}
-  .hero h1{font-size:49px}
-  .hero h2{font-size:18px}
-  .hero p{font-size:15px}
-  .features{padding:18px 3%}
-  .section{padding:55px 4%}
-  .heading h2{font-size:32px}
-  .categories{gap:10px}
-  .category img{height:155px}
-  .category div{padding:12px}
-  .category h3{font-size:16px}
-  .products{gap:10px}
-  .product-img img{height:190px}
-  .product-info{padding:11px}
-  .product-info h3{font-size:14px}
-  .price{font-size:15px}
-  .order{font-size:12px;padding:10px 5px}
-  .cta{
-    margin:10px 4% 45px;
-    padding:25px 18px;
-    display:block;
-    text-align:center;
-  }
-  .whatsapp{display:inline-block;margin-top:18px}
-  .footer{gap:20px}
-}
-</style>
-</head>
+    .hero-text {
+      max-width: 530px;
+    }
 
-<body>
+    .welcome {
+      color: #ff2875;
+      font-size: 15px;
+      font-weight: bold;
+      letter-spacing: 2px;
+    }
 
-<!-- HEADER -->
-<header>
-  <div>
-    <div class="logo">Shelly<span>Stores</span></div>
-    <div class="tagline">Fashion & Accessories</div>
-  </div>
+    .hero h1 {
+      font-size: 55px;
+      line-height: 1.05;
+      margin: 15px 0;
+    }
 
-  <nav>
-    <a href="#home">Home</a>
-    <a href="#categories">Bidhaa</a>
-    <a href="#about">Kuhusu</a>
-    <a href="#contact">Mawasiliano</a>
-  </nav>
+    .hero h1 span {
+      color: #ff2875;
+    }
 
-  <button class="cart">
-    🛒 Kikapu <span id="count">0</span>
-  </button>
-</header>
+    .hero p {
+      color: #666666;
+      font-size: 18px;
+      line-height: 1.6;
+      margin-bottom: 25px;
+    }
 
+    .shop-btn {
+      display: inline-block;
+      background: #ff2875;
+      color: white;
+      padding: 15px 28px;
+      border-radius: 30px;
+      font-weight: bold;
+      font-size: 16px;
+    }
 
-<!-- HERO -->
-<section class="hero" id="home">
-  <div class="hero-content">
+    .shop-btn:hover {
+      background: #d91c5d;
+    }
 
-    <div class="karibu">KARIBU</div>
+    .hero-image {
+      width: 390px;
+      height: 390px;
+      border-radius: 50%;
+      background: #ffd4e2;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 120px;
+      flex-shrink: 0;
+    }
 
-    <h1>
-      SHELLY<span>STORES</span>
-    </h1>
+    /* ================= SECTION ================= */
 
-    <h2>FASHION & ACCESSORIES</h2>
+    section {
+      padding: 55px 5%;
+    }
 
-    <p>
-      Mitindo yako, chaguo lako ✨
-    </p>
+    .section-title {
+      text-align: center;
+      margin-bottom: 35px;
+    }
 
-    <a href="#products" class="hero-btn">
-      Tazama Bidhaa →
-    </a>
+    .section-title h2 {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
 
-  </div>
-</section>
+    .section-title p {
+      color: #777777;
+    }
 
+    .line {
+      width: 55px;
+      height: 4px;
+      background: #ff2875;
+      margin: 12px auto;
+      border-radius: 10px;
+    }
 
-<!-- FEATURES -->
-<section class="features">
+    /* ================= PRODUCTS ================= */
 
-  <div class="feature">
-    <div class="icon">🚚</div>
-    <strong>DELIVERY BORA</strong>
-    <small>Tunakufikishia popote ulipo</small>
-  </div>
+    .products {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
 
-  <div class="feature">
-    <div class="icon">🛡️</div>
-    <strong>100% ORIGINAL</strong>
-    <small>Bidhaa bora na za uhakika</small>
-  </div>
+    .product {
+      border: 1px solid #eeeeee;
+      border-radius: 16px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
+      transition: 0.3s;
+    }
 
-  <div class="feature">
-    <div class="icon">↩️</div>
-    <strong>RETURN POLICY</strong>
-    <small>Sera rahisi ya kurudisha bidhaa</small>
-  </div>
+    .product:hover {
+      transform: translateY(-5px);
+    }
 
-  <div class="feature">
-    <div class="icon">🎧</div>
-    <strong>SUPPORT 24/7</strong>
-    <small>Tuko hapa kukusaidia</small>
-  </div>
+    .product-image {
+      width: 100%;
+      height: 230px;
+      object-fit: cover;
+      display: block;
+      background: #f5f5f5;
+    }
 
-</section>
+    .product-info {
+      padding: 15px;
+    }
 
+    .category {
+      color: #999999;
+      font-size: 13px;
+      margin-bottom: 6px;
+    }
 
-<!-- CATEGORIES -->
-<section class="section" id="categories">
+    .product h3 {
+      font-size: 17px;
+      margin-bottom: 8px;
+    }
 
-  <div class="heading">
-    <small>SHOP BY CATEGORY</small>
-    <h2>Chagua Kategoria</h2>
-    <div class="line"></div>
-  </div>
+    .price {
+      color: #ff2875;
+      font-size: 19px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
 
-  <div class="categories">
+    .add-cart {
+      width: 100%;
+      border: none;
+      background: #111111;
+      color: white;
+      padding: 12px;
+      border-radius: 8px;
+      font-weight: bold;
+      cursor: pointer;
+    }
 
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1551488831-00ddcb6c6bd3?auto=format&fit=crop&w=800&q=80">
-      <div>
-        <h3>👗 NGUO</h3>
-        <p>Mitindo ya kisasa</p>
-      </div>
-    </div>
+    .add-cart:hover {
+      background: #ff2875;
+    }
 
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1542291026-7eec264e27ff?auto=format&fit=crop&w=800&q=80">
-      <div>
-        <h3>👟 VIATU</h3>
-        <p>Za kisasa & stylish</p>
-      </div>
-    </div>
+    /* ================= CATEGORIES ================= */
 
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1524805444758-089113d48a6d?auto=format&fit=crop&w=800&q=80">
-      <div>
-        <h3>⌚ SAA</h3>
-        <p>Fashion ya mkono</p>
-      </div>
-    </div>
+    .categories-section {
+      background: #fff4f8;
+    }
 
-    <div class="category">
-      <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=800&q=80">
-      <div>
-        <h3>👜 ACCESSORIES</h3>
-        <p>Za wanawake & wanaume</p>
-      </div>
-    </div>
+    .categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
 
-  </div>
-</section>
+    .category-card {
+      background: white;
+      border-radius: 18px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+    }
 
+    .category-icon {
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
 
-<!-- PRODUCTS -->
-<section class="section" id="products">
+    .category-card h3 {
+      margin-bottom: 8px;
+    }
 
-  <div class="heading">
-    <small>OUR COLLECTION</small>
-    <h2>Bidhaa Maarufu</h2>
-    <div class="line"></div>
-  </div>
+    .category-card p {
+      color: #777777;
+      margin-bottom: 15px;
+    }
 
-  <div class="products">
+    .category-btn {
+      display: inline-block;
+      background: #ff2875;
+      color: white;
+      padding: 10px 20px;
+      border-radius: 20px;
+      font-weight: bold;
+    }
 
-    <!-- 1 -->
-    <div class="product">
-      <div class="product-img">
-        <span class="badge">NEW</span>
-        <img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1?auto=format&fit=crop&w=800&q=80">
-      </div>
-      <div class="product-info">
-        <small>NGUO</small>
-        <h3>Elegant Dress</h3>
-        <div class="price">TSh 45,000</div>
-        <button class="order"
-        onclick="order('Elegant Dress','45,000')">
-        💬 Agiza WhatsApp
-        </button>
-      </div>
-    </div>
+    /* ================= BENEFITS ================= */
 
-    <!-- 2 -->
-    <div class="product">
-      <div class="product-img">
-        <span class="badge">NEW</span>
-        <img src="https://images.unsplash.com/photo-1602810318383-e386cc2a3ccf?auto=format&fit=crop&w=800&q=80">
-      </div>
-      <div class="product-info">
-        <small>NGUO</small>
-        <h3>Men's Casual Shirt</h3>
-        <div class="price">TSh 35,000</div>
-        <button class="order"
-        onclick="order('Men Casual Shirt','35,000')">
-        💬 Agiza WhatsApp
-        </button>
-      </div>
-    </div>
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 15px;
+      padding-top: 35px;
+      padding-bottom: 35px;
+    }
 
-    <!-- 3 -->
-    <div class="product">
-      <div class="product-img">
-        <span class="badge">NEW</span>
-        <img src="https://images.unsplash.com/photo-1542291026-7eec264e27ff?auto=format&fit=crop&w=800&q=80">
-      </div>
-      <div class="product-info">
-        <small>VIATU</small>
-        <h3>Classic Sneakers</h3>
-        <div class="price">TSh 65,000</div>
-        <button class="order"
-        onclick="order('Classic Sneakers','65,000')">
-        💬 Agiza WhatsApp
-        </button>
-      </div>
-    </div>
+    .benefit {
+      text-align: center;
+      padding: 15px;
+    }
 
-    <!-- 4 MKOBA -->
-    <div class="product">
-      <div class="product-img">
-        <span class="badge">NEW</span>
-        <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=
+    .benefit-icon {
+      font-size: 35px;
+      margin-bottom: 8px;
+    }
+
+    .benefit h4 {
+      margin-bottom: 5px;
+    }
+
+    .benefit p {
+      color: #777777;
+      font-size: 13px;
+    }
+
+    /* ================= NEWSLETTER ================= */
+
+    .newsletter {
+      background: #111111;
+      color: white;
+      padding: 40px 5%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 25px;
+    }
+
+    .newsletter h2 {
+      margin-bottom: 7px;
+    }
+
+    .newsletter p {
+      color: #bbbbbb;
+    }
+
+    .newsletter-form {
+      display: flex;
+      max-width: 500px;
+      width: 100%;
+    }
+
+    .newsletter-form input {
+      flex: 1;
+      padding: 14px;
+      border: none;
+      outline: none;
+      border-radius: 25px 0 0 25px;
+    }
+
+    .newsletter-form button {
+      border: none;
+      background: #ff2875;
+      color: white;
+      padding: 14px 25px;
+      border-radius: 0 25px 25px 0;
+      font-weight: bold;
+      cursor: pointer;
+    }
+
+    /* ================= FOOTER ================= */
+
+    footer {
+      background: #0b0b0b;
+      color: white;
+      padding: 45px 5% 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
+      gap: 30px;
+    }
+
+    .footer-logo {
+      font-size: 27px;
+      font-weight: bold;
+      margin-bottom: 12px;
+    }
+
+    .footer-logo span {
+      color: #ff2875;
+    }
+
+    footer p {
+      color: #aaaaaa;
+      line-height: 1.7;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 15px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #aaaaaa;
+      margin-bottom: 9px;
+    }
+
+    .footer-column a:hover {
+      color: #ff2875;
+    }
+
+    .phone {
+      color: #ff2875 !important;
+      font-weight: bold;
+      margin-bottom: 8px;
+    }
+
+    .social {
+      display: flex;
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .social a {
+      width: 38px;
+      height: 38px;
+      border-radius: 50%;
+      background: #222222;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: white;
+      font-weight: bold;
+      margin: 0;
+    }
+
+    .social a:hover {
+      background: #ff2875;
+      color: white;
+    }
+
+    .copyright {
+      border-top: 1px solid #333333;
+      margin-top: 35px;
+      padding-top: 20px;
+      text-align: center;
+      color: #888888;
+    }
+
+    /* ================= WHATSAPP ================= */
+
+    .whatsapp {
+      position: fixed;
+      right: 20px;
+      bottom: 20px;
+      width: 62px;
+      height: 62px;
+      border-radius: 50%;
+      background: #25D366;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size
