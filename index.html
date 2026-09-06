@@ -3,436 +3,594 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <meta name="description" content="Shellystores - Fashion, Shoes, Shorts, Clothes and Accessories">
   <title>Shellystores | Fashion Store</title>
 
   <style>
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+
+    html {
       scroll-behavior: smooth;
     }
 
     body {
       font-family: Arial, Helvetica, sans-serif;
-      background: #ffffff;
-      color: #171717;
+      background: #fff;
+      color: #111827;
     }
 
     a {
       text-decoration: none;
+      color: inherit;
     }
 
-    /* ================= HEADER ================= */
+    button {
+      font-family: inherit;
+      cursor: pointer;
+    }
 
+    /* HEADER */
     header {
-      background: #111111;
+      background: #07101c;
       color: white;
-      padding: 15px 5%;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 3px 15px rgba(0,0,0,0.15);
+    }
+
+    .navbar {
+      max-width: 1200px;
+      margin: auto;
+      min-height: 72px;
+      padding: 0 20px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       gap: 20px;
-      position: sticky;
-      top: 0;
-      z-index: 1000;
     }
 
     .logo {
-      font-size: 27px;
+      font-size: 28px;
       font-weight: 800;
       white-space: nowrap;
     }
 
     .logo span {
-      color: #ff2875;
+      color: #ff087f;
+    }
+
+    .logo small {
+      display: block;
+      font-size: 8px;
+      letter-spacing: 1px;
+      color: #ddd;
+      margin-top: -3px;
     }
 
     nav {
       display: flex;
-      gap: 25px;
+      gap: 28px;
+      align-items: center;
     }
 
     nav a {
       color: white;
-      font-weight: bold;
-      font-size: 15px;
+      font-size: 14px;
+      font-weight: 600;
+      transition: .3s;
     }
 
-    nav a:hover {
-      color: #ff2875;
+    nav a:hover,
+    nav a.active {
+      color: #ff087f;
     }
 
-    .cart {
-      background: #ff2875;
-      color: white;
-      padding: 10px 15px;
-      border-radius: 25px;
-      font-weight: bold;
-      white-space: nowrap;
-    }
-
-    /* ================= HERO ================= */
-
-    .hero {
-      min-height: 470px;
-      padding: 55px 7%;
+    .nav-icons {
       display: flex;
       align-items: center;
-      justify-content: space-between;
-      gap: 30px;
-      background: linear-gradient(135deg, #fff0f5, #ffffff);
-      overflow: hidden;
+      gap: 18px;
+      font-size: 24px;
     }
 
-    .hero-text {
-      max-width: 530px;
+    .cart-icon {
+      position: relative;
     }
 
-    .welcome {
-      color: #ff2875;
-      font-size: 15px;
-      font-weight: bold;
-      letter-spacing: 2px;
-    }
-
-    .hero h1 {
-      font-size: 55px;
-      line-height: 1.05;
-      margin: 15px 0;
-    }
-
-    .hero h1 span {
-      color: #ff2875;
-    }
-
-    .hero p {
-      color: #666666;
-      font-size: 18px;
-      line-height: 1.6;
-      margin-bottom: 25px;
-    }
-
-    .shop-btn {
-      display: inline-block;
-      background: #ff2875;
+    .cart-count {
+      position: absolute;
+      top: -10px;
+      right: -10px;
+      background: #ff087f;
       color: white;
-      padding: 15px 28px;
-      border-radius: 30px;
-      font-weight: bold;
-      font-size: 16px;
-    }
-
-    .shop-btn:hover {
-      background: #d91c5d;
-    }
-
-    .hero-image {
-      width: 390px;
-      height: 390px;
+      width: 20px;
+      height: 20px;
       border-radius: 50%;
-      background: #ffd4e2;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 120px;
-      flex-shrink: 0;
+      font-size: 11px;
+      font-weight: bold;
     }
 
-    /* ================= SECTION ================= */
+    .menu-btn {
+      display: none;
+      background: none;
+      border: none;
+      color: white;
+      font-size: 27px;
+    }
 
-    section {
-      padding: 55px 5%;
+    /* HERO */
+    .hero {
+      background: linear-gradient(110deg, #fff1f6, #ffdce9);
+      min-height: 470px;
+      overflow: hidden;
+    }
+
+    .hero-inner {
+      max-width: 1200px;
+      min-height: 470px;
+      margin: auto;
+      padding: 45px 30px 25px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      position: relative;
+    }
+
+    .hero-text {
+      width: 48%;
+      z-index: 2;
+    }
+
+    .welcome {
+      color: #f50075;
+      font-weight: 800;
+      letter-spacing: 1px;
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .hero h1 {
+      font-size: 58px;
+      line-height: .98;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      color: #f50075;
+    }
+
+    .hero p {
+      font-size: 17px;
+      line-height: 1.6;
+      max-width: 520px;
+      margin-bottom: 25px;
+      color: #293241;
+    }
+
+    .shop-btn {
+      border: none;
+      background: #ff087f;
+      color: white;
+      padding: 15px 28px;
+      border-radius: 30px;
+      font-size: 16px;
+      font-weight: 800;
+      box-shadow: 0 7px 18px rgba(255,8,127,.25);
+      transition: .3s;
+    }
+
+    .shop-btn:hover {
+      transform: translateY(-2px);
+      background: #d90069;
+    }
+
+    .hero-image {
+      width: 50%;
+      height: 470px;
+      display: flex;
+      align-items: flex-end;
+      justify-content: center;
+    }
+
+    .hero-image img {
+      width: 100%;
+      max-width: 580px;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      border-radius: 0;
+    }
+
+    /* FEATURES */
+    .features {
+      max-width: 1200px;
+      margin: auto;
+      padding: 18px 25px;
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+    }
+
+    .feature {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .feature-icon {
+      color: #ff087f;
+      font-size: 29px;
+    }
+
+    .feature h4 {
+      font-size: 14px;
+      margin-bottom: 4px;
+    }
+
+    .feature p {
+      color: #777;
+      font-size: 11px;
+    }
+
+    /* CATEGORIES */
+    .categories {
+      max-width: 1200px;
+      margin: auto;
+      padding: 45px 20px 25px;
     }
 
     .section-title {
       text-align: center;
-      margin-bottom: 35px;
+      margin-bottom: 30px;
     }
 
     .section-title h2 {
-      font-size: 35px;
-      margin-bottom: 8px;
+      font-size: 32px;
+      display: inline-block;
+      position: relative;
+    }
+
+    .section-title h2:before,
+    .section-title h2:after {
+      content: "";
+      width: 50px;
+      height: 3px;
+      background: #ff087f;
+      display: inline-block;
+      vertical-align: middle;
+      margin: 0 20px;
     }
 
     .section-title p {
-      color: #777777;
+      color: #777;
+      margin-top: 8px;
     }
 
-    .line {
-      width: 55px;
-      height: 4px;
-      background: #ff2875;
-      margin: 12px auto;
-      border-radius: 10px;
-    }
-
-    /* ================= PRODUCTS ================= */
-
-    .products {
+    .category-grid {
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 20px;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
     }
 
-    .product {
-      border: 1px solid #eeeeee;
-      border-radius: 16px;
-      overflow: hidden;
-      background: white;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.07);
-      transition: 0.3s;
+    .category-card {
+      background: #fff;
+      border: 1px solid #eee;
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 5px 18px rgba(0,0,0,.06);
+      transition: .3s;
     }
 
-    .product:hover {
+    .category-card:hover {
       transform: translateY(-5px);
     }
 
-    .product-image {
-      width: 100%;
-      height: 230px;
+    .category-card img {
+      width: 120px;
+      height: 120px;
       object-fit: cover;
-      display: block;
-      background: #f5f5f5;
+      border-radius: 50%;
+      margin-bottom: 12px;
+    }
+
+    .category-card h3 {
+      font-size: 16px;
+      margin-bottom: 12px;
+    }
+
+    .category-btn {
+      display: inline-block;
+      background: #ff087f;
+      color: white;
+      border-radius: 25px;
+      padding: 10px 18px;
+      font-size: 12px;
+      font-weight: bold;
+    }
+
+    /* PRODUCTS */
+    .products {
+      max-width: 1200px;
+      margin: auto;
+      padding: 30px 20px 50px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4,1fr);
+      gap: 18px;
+    }
+
+    .product-card {
+      background: white;
+      border: 1px solid #e5e7eb;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 15px rgba(0,0,0,.06);
+      transition: .3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+    }
+
+    .product-image {
+      height: 210px;
+      position: relative;
+      background: #f7f7f7;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .heart {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: white;
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      border: none;
+      font-size: 18px;
     }
 
     .product-info {
-      padding: 15px;
+      padding: 13px;
     }
 
-    .category {
-      color: #999999;
-      font-size: 13px;
-      margin-bottom: 6px;
+    .product-type {
+      color: #777;
+      font-size: 11px;
+      margin-bottom: 5px;
     }
 
-    .product h3 {
-      font-size: 17px;
+    .product-info h3 {
+      font-size: 15px;
       margin-bottom: 8px;
     }
 
     .price {
-      color: #ff2875;
-      font-size: 19px;
-      font-weight: bold;
+      color: #ff087f;
+      font-size: 17px;
+      font-weight: 800;
       margin-bottom: 12px;
     }
 
     .add-cart {
       width: 100%;
       border: none;
-      background: #111111;
+      background: #ff087f;
       color: white;
-      padding: 12px;
+      padding: 11px;
       border-radius: 8px;
       font-weight: bold;
-      cursor: pointer;
     }
 
     .add-cart:hover {
-      background: #ff2875;
+      background: #d90069;
     }
 
-    /* ================= CATEGORIES ================= */
-
-    .categories-section {
-      background: #fff4f8;
-    }
-
-    .categories {
+    /* PROMO */
+    .promo {
+      max-width: 1200px;
+      margin: 0 auto 50px;
+      padding: 0 20px;
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      grid-template-columns: 1fr 1fr;
+      gap: 18px;
     }
 
-    .category-card {
-      background: white;
-      border-radius: 18px;
+    .promo-box {
+      min-height: 170px;
+      border-radius: 15px;
       padding: 30px;
-      text-align: center;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      overflow: hidden;
+      background: #ffd9e7;
     }
 
-    .category-icon {
-      font-size: 55px;
-      margin-bottom: 15px;
-    }
-
-    .category-card h3 {
-      margin-bottom: 8px;
-    }
-
-    .category-card p {
-      color: #777777;
-      margin-bottom: 15px;
-    }
-
-    .category-btn {
-      display: inline-block;
-      background: #ff2875;
+    .promo-box.dark {
+      background: #08111e;
       color: white;
-      padding: 10px 20px;
-      border-radius: 20px;
-      font-weight: bold;
     }
 
-    /* ================= BENEFITS ================= */
+    .promo-box h2 {
+      font-size: 27px;
+      margin-bottom: 10px;
+    }
 
-    .benefits {
+    .promo-box p {
+      font-size: 15px;
+      margin-bottom: 15px;
+    }
+
+    /* SHOP CATEGORY */
+    .shop-category {
+      background: #fff1f6;
+      padding: 35px 20px;
+    }
+
+    .shop-category-inner {
+      max-width: 1100px;
+      margin: auto;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 15px;
-      padding-top: 35px;
-      padding-bottom: 35px;
-    }
-
-    .benefit {
+      grid-template-columns: repeat(4,1fr);
+      gap: 10px;
       text-align: center;
-      padding: 15px;
     }
 
-    .benefit-icon {
+    .shop-item {
+      padding: 15px;
+      border-right: 1px solid #ddd;
+    }
+
+    .shop-item:last-child {
+      border: none;
+    }
+
+    .shop-item .big-icon {
+      color: #ff087f;
       font-size: 35px;
       margin-bottom: 8px;
     }
 
-    .benefit h4 {
+    .shop-item h4 {
       margin-bottom: 5px;
     }
 
-    .benefit p {
-      color: #777777;
-      font-size: 13px;
+    .shop-item p {
+      color: #777;
+      font-size: 12px;
     }
 
-    /* ================= NEWSLETTER ================= */
-
+    /* NEWSLETTER */
     .newsletter {
-      background: #111111;
+      background: #07101c;
       color: white;
-      padding: 40px 5%;
+      padding: 25px 20px;
+    }
+
+    .newsletter-inner {
+      max-width: 1100px;
+      margin: auto;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
       gap: 25px;
     }
 
-    .newsletter h2 {
-      margin-bottom: 7px;
+    .newsletter h3 {
+      font-size: 20px;
+      margin-bottom: 5px;
     }
 
     .newsletter p {
-      color: #bbbbbb;
+      color: #ccc;
+      font-size: 12px;
     }
 
-    .newsletter-form {
+    .subscribe {
       display: flex;
-      max-width: 500px;
+      max-width: 430px;
       width: 100%;
     }
 
-    .newsletter-form input {
+    .subscribe input {
       flex: 1;
       padding: 14px;
       border: none;
       outline: none;
-      border-radius: 25px 0 0 25px;
+      border-radius: 8px 0 0 8px;
     }
 
-    .newsletter-form button {
+    .subscribe button {
       border: none;
-      background: #ff2875;
+      background: #ff087f;
       color: white;
-      padding: 14px 25px;
-      border-radius: 0 25px 25px 0;
+      padding: 0 20px;
       font-weight: bold;
-      cursor: pointer;
+      border-radius: 0 8px 8px 0;
     }
 
-    /* ================= FOOTER ================= */
-
+    /* FOOTER */
     footer {
-      background: #0b0b0b;
+      background: #050c15;
       color: white;
-      padding: 45px 5% 20px;
+      padding: 40px 20px 20px;
     }
 
-    .footer-content {
+    .footer-inner {
+      max-width: 1100px;
+      margin: auto;
       display: grid;
-      grid-template-columns: 1.5fr 1fr 1.5fr 1fr;
-      gap: 30px;
+      grid-template-columns: 1.3fr 1fr 1.2fr 1.2fr;
+      gap: 35px;
     }
 
     .footer-logo {
-      font-size: 27px;
-      font-weight: bold;
-      margin-bottom: 12px;
-    }
-
-    .footer-logo span {
-      color: #ff2875;
-    }
-
-    footer p {
-      color: #aaaaaa;
-      line-height: 1.7;
-    }
-
-    .footer-column h3 {
-      margin-bottom: 15px;
-    }
-
-    .footer-column a {
-      display: block;
-      color: #aaaaaa;
-      margin-bottom: 9px;
-    }
-
-    .footer-column a:hover {
-      color: #ff2875;
-    }
-
-    .phone {
-      color: #ff2875 !important;
-      font-weight: bold;
+      font-size: 25px;
+      font-weight: 800;
       margin-bottom: 8px;
     }
 
-    .social {
+    .footer-logo span {
+      color: #ff087f;
+    }
+
+    .footer-column p,
+    .footer-column a {
+      color: #bbb;
+      font-size: 13px;
+      line-height: 1.8;
+      display: block;
+    }
+
+    .footer-column h3 {
+      margin-bottom: 12px;
+    }
+
+    .socials {
       display: flex;
       gap: 10px;
       margin-top: 12px;
     }
 
-    .social a {
-      width: 38px;
-      height: 38px;
+    .socials a {
+      width: 34px;
+      height: 34px;
+      background: white;
+      color: #07101c;
       border-radius: 50%;
-      background: #222222;
       display: flex;
       align-items: center;
       justify-content: center;
-      color: white;
       font-weight: bold;
-      margin: 0;
-    }
-
-    .social a:hover {
-      background: #ff2875;
-      color: white;
     }
 
     .copyright {
-      border-top: 1px solid #333333;
-      margin-top: 35px;
-      padding-top: 20px;
-      text-align: center;
-      color: #888888;
+      max-width: 1100px;
+      margin: 30px auto 0;
+      padding-top: 18px;
+      border-top: 1px solid #27313d;
+      color: #aaa;
+      font-size: 12px;
     }
 
-    /* ================= WHATSAPP ================= */
-
+    /* WHATSAPP */
     .whatsapp {
       position: fixed;
       right: 20px;
@@ -445,4 +603,732 @@
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size
+      font-size: 32px;
+      font-weight: bold;
+      z-index: 2000;
+      box-shadow: 0 5px 20px rgba(0,0,0,.25);
+    }
+
+    .whatsapp:hover {
+      transform: scale(1.08);
+    }
+
+    /* MOBILE */
+    @media (max-width: 900px) {
+
+      nav {
+        display: none;
+      }
+
+      .menu-btn {
+        display: block;
+      }
+
+      .hero-inner {
+        flex-direction: column;
+        padding-top: 35px;
+      }
+
+      .hero-text {
+        width: 100%;
+        text-align: center;
+      }
+
+      .hero-text p {
+        margin-left: auto;
+        margin-right: auto;
+      }
+
+      .hero h1 {
+        font-size: 43px;
+      }
+
+      .hero-image {
+        width: 100%;
+        height: 350px;
+      }
+
+      .features {
+        grid-template-columns: 1fr;
+      }
+
+      .category-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .promo {
+        grid-template-columns: 1fr;
+      }
+
+      .shop-category-inner {
+        grid-template-columns: repeat(2,1fr);
+      }
+
+      .shop-item {
+        border: none;
+      }
+
+      .newsletter-inner {
+        flex-direction: column;
+        align-items: stretch;
+      }
+
+      .footer-inner {
+        grid-template-columns: repeat(2,1fr);
+      }
+    }
+
+    @media (max-width: 520px) {
+
+      .navbar {
+        padding: 0 14px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .nav-icons {
+        gap: 10px;
+      }
+
+      .hero {
+        min-height: auto;
+      }
+
+      .hero-inner {
+        min-height: auto;
+        padding: 35px 15px 0;
+      }
+
+      .hero h1 {
+        font-size: 38px;
+      }
+
+      .hero p {
+        font-size: 15px;
+      }
+
+      .hero-image {
+        height: 300px;
+      }
+
+      .section-title h2 {
+        font-size: 25px;
+      }
+
+      .section-title h2:before,
+      .section-title h2:after {
+        width: 25px;
+        margin: 0 8px;
+      }
+
+      .category-grid {
+        gap: 10px;
+      }
+
+      .category-card {
+        padding: 12px;
+      }
+
+      .category-card img {
+        width: 90px;
+        height: 90px;
+      }
+
+      .product-grid {
+        gap: 10px;
+      }
+
+      .product-image {
+        height: 170px;
+      }
+
+      .product-info h3 {
+        font-size: 13px;
+      }
+
+      .price {
+        font-size: 15px;
+      }
+
+      .promo-box {
+        min-height: 140px;
+        padding: 20px;
+      }
+
+      .promo-box h2 {
+        font-size: 20px;
+      }
+
+      .shop-category-inner {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+
+      .whatsapp {
+        width: 55px;
+        height: 55px;
+        font-size: 28px;
+        right: 15px;
+        bottom: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="navbar">
+
+      <a href="#" class="logo">
+        Shelly<span>stores</span>
+        <small>FASHION • SHOES • SHORTS • ACCESSORIES</small>
+      </a>
+
+      <nav>
+        <a href="#" class="active">Home</a>
+        <a href="#shoes">Shoes</a>
+        <a href="#shorts">Shorts</a>
+        <a href="#clothes">Clothes</a>
+        <a href="#accessories">Accessories</a>
+      </nav>
+
+      <div class="nav-icons">
+        <span>⌕</span>
+
+        <span class="cart-icon">
+          🛒
+          <span class="cart-count" id="cartCount">0</span>
+        </span>
+
+        <button class="menu-btn">☰</button>
+      </div>
+
+    </div>
+  </header>
+
+
+  <!-- HERO -->
+  <section class="hero">
+
+    <div class="hero-inner">
+
+      <div class="hero-text">
+
+        <div class="welcome">
+          WELCOME TO SHELLYSTORES
+        </div>
+
+        <h1>
+          Your Style.<br>
+          Your <span>Choice.</span>
+        </h1>
+
+        <p>
+          Discover beautiful shoes, stylish shorts,
+          clothes and amazing fashion accessories —
+          all in one place.
+        </p>
+
+        <button class="shop-btn" onclick="scrollToProducts()">
+          SHOP NOW →
+        </button>
+
+      </div>
+
+      <div class="hero-image">
+
+        <!-- Tumia picha yako ya mwanamke hapa kama unayo -->
+        <img
+          src="IMG-20260826-WA0097.jpg"
+          alt="Shellystores Fashion"
+        >
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FEATURES -->
+  <section class="features">
+
+    <div class="feature">
+      <div class="feature-icon">🚚</div>
+      <div>
+        <h4>Fast Delivery</h4>
+        <p>Get your orders quickly</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🛡️</div>
+      <div>
+        <h4>Secure Payments</h4>
+        <p>Shop with confidence</p>
+      </div>
+    </div>
+
+    <div class="feature">
+      <div class="feature-icon">🎧</div>
+      <div>
+        <h4>24/7 Support</h4>
+        <p>We're here to help</p>
+      </div>
+    </div>
+
+  </section>
+
+
+  <!-- CATEGORIES -->
+  <section class="categories">
+
+    <div class="section-title">
+      <h2>Shop By Category</h2>
+      <p>Find what matches your style</p>
+    </div>
+
+    <div class="category-grid">
+
+      <div class="category-card" id="shoes">
+        <img src="IMG-20260821-WA0221.jpg" alt="Shoes">
+        <h3>Women's Shoes</h3>
+        <a href="#products" class="category-btn">Shop Now →</a>
+      </div>
+
+      <div class="category-card" id="shorts">
+        <img src="IMG-20260823-WA0222.jpg" alt="Women's Shorts">
+        <h3>Women's Shorts</h3>
+        <a href="#products" class="category-btn">Shop Now →</a>
+      </div>
+
+      <div class="category-card" id="clothes">
+        <img src="IMG-20260823-WA0207.jpg" alt="Women's Clothes">
+        <h3>Women's Clothes</h3>
+        <a href="#products" class="category-btn">Shop Now →</a>
+      </div>
+
+      <div class="category-card" id="accessories">
+        <img src="IMG-20260821-WA0092.jpg" alt="Accessories">
+        <h3>Accessories</h3>
+        <a href="#products" class="category-btn">Shop Now →</a>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PRODUCTS -->
+  <section class="products" id="products">
+
+    <div class="section-title">
+      <h2>Featured Products</h2>
+      <p>Discover our latest fashion collection</p>
+    </div>
+
+    <div class="product-grid">
+
+      <!-- PRODUCT 1 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260821-WA0221.jpg" alt="Stylish Shoes">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Shoes</div>
+          <h3>Stylish Shoes</h3>
+          <div class="price">TZS 35,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 2 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260823-WA0222.jpg" alt="Fashion Shoes">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Shoes</div>
+          <h3>Fashion Shoes</h3>
+          <div class="price">TZS 40,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 3 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260823-WA0207.jpg" alt="Elegant Shoes">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Shoes</div>
+          <h3>Elegant Shoes</h3>
+          <div class="price">TZS 38,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 4 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260821-WA0092.jpg" alt="Classic Shoes">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Shoes</div>
+          <h3>Classic Shoes</h3>
+          <div class="price">TZS 45,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 5 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260823-WA0320.jpg" alt="Beautiful Shorts">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Shorts</div>
+          <h3>Beautiful Shorts</h3>
+          <div class="price">TZS 25,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 6 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260821-WA0104.jpg" alt="Stylish Shorts">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Shorts</div>
+          <h3>Stylish Shorts</h3>
+          <div class="price">TZS 28,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 7 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260824-WA0101.jpg" alt="Fashion Shorts">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Shorts</div>
+          <h3>Fashion Shorts</h3>
+          <div class="price">TZS 30,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+
+      <!-- PRODUCT 8 -->
+      <div class="product-card">
+
+        <div class="product-image">
+          <img src="IMG-20260824-WA0100.jpg" alt="Fashion Accessories">
+          <button class="heart">♡</button>
+        </div>
+
+        <div class="product-info">
+          <div class="product-type">Accessories</div>
+          <h3>New Collection</h3>
+          <div class="price">TZS 32,000</div>
+
+          <button class="add-cart" onclick="addToCart()">
+            🛒 Add to Cart
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- PROMO -->
+  <section class="promo">
+
+    <div class="promo-box">
+
+      <div>
+        <h2>Trendy Shoes</h2>
+        <p>For Every Occasion</p>
+        <button class="shop-btn" onclick="scrollToProducts()">
+          Shop Now →
+        </button>
+      </div>
+
+    </div>
+
+    <div class="promo-box dark">
+
+      <div>
+        <h2>Stylish Shorts</h2>
+        <p>For A Better You</p>
+        <button class="shop-btn" onclick="scrollToProducts()">
+          Shop Now →
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SHOP CATEGORY -->
+  <section class="shop-category">
+
+    <div class="section-title">
+      <h2>Shop By Category</h2>
+      <p>Find what matches your style</p>
+    </div>
+
+    <div class="shop-category-inner">
+
+      <div class="shop-item">
+        <div class="big-icon">👠</div>
+        <h4>Women's Shoes</h4>
+        <p>Elegant & Comfortable</p>
+      </div>
+
+      <div class="shop-item">
+        <div class="big-icon">👗</div>
+        <h4>Women's Clothes</h4>
+        <p>Trendy & Modern</p>
+      </div>
+
+      <div class="shop-item">
+        <div class="big-icon">🩳</div>
+        <h4>Shorts</h4>
+        <p>Cool & Stylish</p>
+      </div>
+
+      <div class="shop-item">
+        <div class="big-icon">👜</div>
+        <h4>Accessories</h4>
+        <p>Complete Your Look</p>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- NEWSLETTER -->
+  <section class="newsletter">
+
+    <div class="newsletter-inner">
+
+      <div>
+        <h3>💌 Join Our Newsletter</h3>
+        <p>Get updates on new arrivals, offers and more.</p>
+      </div>
+
+      <div class="subscribe">
+        <input
+          type="email"
+          id="email"
+          placeholder="Enter your email address"
+        >
+
+        <button onclick="subscribeUser()">
+          Subscribe
+        </button>
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer>
+
+    <div class="footer-inner">
+
+      <div class="footer-column">
+
+        <div class="footer-logo">
+          Shelly<span>stores</span>
+        </div>
+
+        <p>
+          Your online fashion destination.
+        </p>
+
+        <div class="socials">
+          <a href="#" aria-label="Facebook">f</a>
+          <a href="#" aria-label="Instagram">◎</a>
+          <a href="#" aria-label="TikTok">♪</a>
+        </div>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Quick Links</h3>
+
+        <a href="#">Home</a>
+        <a href="#shoes">Shoes</a>
+        <a href="#shorts">Shorts</a>
+        <a href="#clothes">Clothes</a>
+        <a href="#accessories">Accessories</a>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Contact Us</h3>
+
+        <p>📞 0755 889 702</p>
+        <p>📞 0710 155 631</p>
+        <p>📧 shellystores@gmail.com</p>
+        <p>📍 Dar es Salaam, Tanzania</p>
+
+      </div>
+
+
+      <div class="footer-column">
+
+        <h3>Follow Us</h3>
+
+        <p>
+          Follow Shellystores for new products,
+          offers and fashion updates.
+        </p>
+
+        <div class="socials">
+          <a href="#">f</a>
+          <a href="#">◎</a>
+          <a href="#">♪</a>
+        </div>
+
+      </div>
+
+    </div>
+
+
+    <div class="copyright">
+      © 2026 Shellystores. All rights reserved.
+    </div>
+
+  </footer>
+
+
+  <!-- WHATSAPP BUTTON -->
+  <a
+    class="whatsapp"
+    href="https://wa.me/255755889702?text=Hello%20Shellystores%2C%20nimevutiwa%20na%20bidhaa%20zenu."
+    target="_blank"
+    rel="noopener"
+    aria-label="Chat with Shellystores on WhatsApp"
+  >
+    ☎
+  </a>
+
+
+  <script>
+
+    let cart = 0;
+
+    function addToCart() {
+      cart++;
+
+      document.getElementById("cartCount").textContent = cart;
+
+      alert("Bidhaa imeongezwa kwenye cart 🛒");
+    }
+
+    function scrollToProducts() {
+      document.getElementById("products").scrollIntoView({
+        behavior: "smooth"
+      });
+    }
+
+    function subscribeUser() {
+
+      const email = document.getElementById("email").value;
+
+      if (email === "") {
+        alert("Tafadhali weka email yako.");
+        return;
+      }
+
+      alert("Asante! Umejiunga na Shellystores ❤️");
+      document.getElementById("email").value = "";
+
+    }
+
+  </script>
+
+</body>
+</html>
